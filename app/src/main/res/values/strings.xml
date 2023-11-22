@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Project_2</string>
+
+
+    <string name="mainExerciseHint">Enter Exercise</string>
+    <string name="mainWeightHint">Enter Weight</string>
+    <string name="mainRepsHint">Enter Reps</string>
+    <string name="mainSubmitButton">Submit</string>
+    <string name="no_logs_message">No Logs yet, time to hit the gym.</string>
+    <string name="logout">Logout?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+</resources>
