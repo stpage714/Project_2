@@ -2,15 +2,19 @@
     <string name="app_name">Project_2</string>
 
 
-    <string name="mainExerciseHint">Enter Exercise</string>
-    <string name="mainWeightHint">Enter Weight</string>
-    <string name="mainRepsHint">Enter Reps</string>
     <string name="mainSubmitButton">Submit</string>
-    <string name="no_logs_message">No Logs yet, time to hit the gym.</string>
+    <string name="no_logs_message">No Logs yet!.</string>
     <string name="logout">Logout?</string>
     <string name="Yes">Yes</string>
     <string name="No">No</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="mainDescriptionHint">Main description</string>
+    <string name="mainQuantityHint">Enter Quantity</string>
+    <string name="mainPriceHint">Enter Price</string>
+    <string name="title_activity_main2">MainActivity2</string>
+
+    <string name="new_username">Enter new username</string>
+    <string name="new_password">Enter new password</string>
 </resources>
