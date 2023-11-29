@@ -42,7 +42,7 @@ public class NewLoginPage extends AppCompatActivity {
                 getValuesFromDisplay();
                 Toast.makeText(NewLoginPage.this,"User added!",Toast.LENGTH_SHORT).show();
 
-                mUser = new User(mNewUsername, mNewPassword);
+                mUser = new User(mNewUsername, mNewPassword,false);
                 mProductLogDAO.insert(mUser);// new user added
 
                 Intent intent = LoginActivity.intentFactory(getApplicationContext());

@@ -17,7 +17,8 @@ import com.example.project_2.DB.ProductLogDAO;
 public class LoginActivity extends AppCompatActivity {
     private EditText mUsernameField;
     private EditText mPasswordField;
-    private Button mButton;
+    private Button mSubmitButton;
+    private Button mAdminButton;
     private ProductLogDAO mProductLogDAO;
     private String mUsername;
     private String mPassword;
@@ -35,8 +36,10 @@ public class LoginActivity extends AppCompatActivity {
     private void wireupDisplay(){
         mUsernameField = findViewById(R.id.editTextTextLoginUserName);
         mPasswordField = findViewById(R.id.editTextTextLoginPassword);
-        mButton = findViewById(R.id.buttonLogin);
-        mButton.setOnClickListener(new View.OnClickListener() {
+        mSubmitButton = findViewById(R.id.buttonLogin);
+        mAdminButton = findViewById(R.id.mainAdminButton);
+
+        mSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //check if valid user in productlogdao
@@ -45,10 +48,9 @@ public class LoginActivity extends AppCompatActivity {
                     if(!validatePassword()){
                         Toast.makeText(LoginActivity.this,"Invalid password",Toast.LENGTH_SHORT).show();
                     }else{
-                        if(mUsername.equals("admin2") && mPassword.equals("admin2")){
-                            //admin page
-                            intent = AdminPage.intentFactory(getApplicationContext());
-                            startActivity(intent);
+                        if((mUsername.equals("admin2") && mPassword.equals("admin2")) || mUser.getMisAdmin()){
+                            //admin
+                            mAdminButton.setVisibility(View.VISIBLE);
                         }else {
                             //user ok main login
                             intent = MainActivity.intentFactory(getApplicationContext(), mUser.getUserId());
@@ -60,8 +62,16 @@ public class LoginActivity extends AppCompatActivity {
                     intent = NewLoginPage.intentFactory(getApplicationContext());
                     startActivity(intent);
                 }
-
             }//end on click login submit
+        });
+
+
+        mAdminButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = AdminPage.intentFactory(getApplicationContext());
+                startActivity(intent);
+            }
         });
     }//end wireupDisplay()
 

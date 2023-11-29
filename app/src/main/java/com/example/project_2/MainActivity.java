@@ -156,8 +156,9 @@ public class MainActivity extends AppCompatActivity {
         //do we have a user at all?
         List<User> users = mProductLogDAO.getAllUsers();
         if(users.size() <= 0){
-            User adminUser = new User("admin2", "admin2");
-            mProductLogDAO.insert(adminUser);
+            User adminUser = new User("admin2", "admin2",true);
+            User defaultUser = new User("testuser1","testuser1",false);
+            mProductLogDAO.insert(adminUser,defaultUser);
         }
         //go to login screen finally
         Intent intent = LoginActivity.intentFactory(this);//call static intent in Loginactivity

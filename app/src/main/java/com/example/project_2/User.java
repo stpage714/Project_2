@@ -12,10 +12,20 @@ public class User {
 
     private String mUserName;
     private String mPassword;
+    private Boolean misAdmin;
 
-    public User(String userName, String password) {
+    public User(String userName, String password, Boolean misAdmin) {
         mUserName = userName;
         mPassword = password;
+        this.misAdmin = misAdmin;
+    }
+
+    public Boolean getMisAdmin() {
+        return misAdmin;
+    }
+
+    public void setMisAdmin(Boolean misAdmin) {
+        this.misAdmin = misAdmin;
     }
 
     public int getUserId() {

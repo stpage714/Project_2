@@ -18,12 +18,49 @@ public class AdminPage extends AppCompatActivity {
     private ActivityMainBinding binding;//this binds widgets to display
     private ProductLogDAO mProductLogDAO;
     private Button mLogOut;
+    private Button mAdminAdd;
+    private Button mAdminView;
+    private Button mAdminReplace;
+    private Button mExistingUsers;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_page);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         //links textview/edittext/button to mainactivity
+
+        mAdminAdd = findViewById(R.id.adminAddButton);
+        mAdminAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //not implemented
+            }
+        });
+
+        mAdminView = findViewById(R.id.adminViewExistingItemsButton);
+        mAdminView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = AdminViewItems.intentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });//end viewExistingitems listener
+
+        mAdminReplace = findViewById(R.id.adminReplaceButton);
+        mAdminReplace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //not implemented
+            }
+        });
+        mExistingUsers = findViewById(R.id.adminViewExistingUsersButton);
+        mExistingUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //not implemented
+            }
+        });
 
         mLogOut = findViewById(R.id.adminLogoutButton);
         mLogOut.setOnClickListener(new View.OnClickListener() {
