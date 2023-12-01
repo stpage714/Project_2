@@ -46,6 +46,7 @@ public class AdminViewItems extends AppCompatActivity {
             @Override
             public void onClick(View v) {
             refreshDisplay();
+
             }
         });
         mReturnButton.setOnClickListener(new View.OnClickListener() {

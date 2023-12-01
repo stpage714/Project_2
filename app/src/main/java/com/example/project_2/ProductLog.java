@@ -20,14 +20,13 @@ public class ProductLog {
     private int mQuantity;
     private double mPrice;
     private Date mDate;
-    private int mUserId;
-    public ProductLog(String description, int quantity, double price,int userId) {
+
+    public ProductLog(String description, int quantity, double price) {
         //constructor
         mDescription = description;
         mQuantity = quantity;
         mPrice = price;
         mDate = new Date();
-        mUserId = userId;
     }
 
     public int getProductId() {
@@ -70,13 +69,6 @@ public class ProductLog {
         mDate = date;
     }
 
-    public int getUserId() {
-        return mUserId;
-    }
-
-    public void setUserId(int userId) {
-        mUserId = userId;
-    }
 
     @Override
     public String toString() {

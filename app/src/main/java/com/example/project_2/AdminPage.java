@@ -34,7 +34,8 @@ public class AdminPage extends AppCompatActivity {
         mAdminAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //not implemented
+                intent = AdminAddItemsPage.intentFactory(getApplicationContext());
+                startActivity(intent);
             }
         });
 

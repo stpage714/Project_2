@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        ProductLog log = new ProductLog(description,quantity,0,mUserId);
+        ProductLog log = new ProductLog(description,quantity,0);
         return log;
     }// end getValuesFromDisplay()
 
