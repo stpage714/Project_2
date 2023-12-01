@@ -91,7 +91,6 @@ public class ProductLog {
         output += "\n";
         output += getDate();
         output += "\n";
-        output += "userId == " + mUserId;
         return output;
     }
 

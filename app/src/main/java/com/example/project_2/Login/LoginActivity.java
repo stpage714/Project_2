@@ -1,4 +1,4 @@
-package com.example.project_2;
+package com.example.project_2.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -11,8 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.project_2.AdminPage;
 import com.example.project_2.DB.AppDataBase;
 import com.example.project_2.DB.ProductLogDAO;
+import com.example.project_2.MainActivity;
+import com.example.project_2.R;
+import com.example.project_2.User;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText mUsernameField;

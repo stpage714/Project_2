@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/AdmintextView"
-        android:layout_width="154dp"
-        android:layout_height="55dp"
-        android:text="Welcome Admin"
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:text="Welcome Admin!"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -22,63 +22,63 @@
 
     <Button
         android:id="@+id/adminAddButton"
-        android:layout_width="110dp"
-        android:layout_height="80dp"
+        android:layout_width="175dp"
+        android:layout_height="100dp"
         android:text="Add Items"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.138" />
+        app:layout_constraintVertical_bias="0.18" />
 
     <Button
         android:id="@+id/adminViewExistingItemsButton"
-        android:layout_width="110dp"
-        android:layout_height="80dp"
-        android:text=" View Existing Items"
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:text=" View Items"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.285" />
+        app:layout_constraintVertical_bias="0.34" />
 
     <Button
         android:id="@+id/adminReplaceButton"
-        android:layout_width="110dp"
-        android:layout_height="80dp"
-        android:text="Replace an Item"
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:text="Replace Items"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <Button
         android:id="@+id/adminViewExistingUsersButton"
-        android:layout_width="110dp"
-        android:layout_height="80dp"
-        android:text="View Existing Users"
+        android:layout_width="175dp"
+        android:layout_height="100dp"
+        android:text="View Users"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.582" />
+        app:layout_constraintVertical_bias="0.657" />
 
     <Button
         android:id="@+id/adminLogoutButton"
-        android:layout_width="110dp"
-        android:layout_height="80dp"
+        android:layout_width="175dp"
+        android:layout_height="100dp"
         android:text="Logout"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.735" />
+        app:layout_constraintVertical_bias="0.816" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,10 +15,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.project_2.DB.AppDataBase;
 import com.example.project_2.DB.ProductLogDAO;
+import com.example.project_2.Login.LoginActivity;
 import com.example.project_2.databinding.ActivityMainBinding;
 
 import java.util.List;

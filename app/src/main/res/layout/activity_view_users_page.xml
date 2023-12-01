@@ -6,4 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".ViewUsersPage">
 
+    <Button
+        android:id="@+id/mainListButtonAdmin2"
+        android:layout_width="145dp"
+        android:layout_height="85dp"
+        android:text="List Users"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.419" />
+
+    <Button
+        android:id="@+id/RemoveUserButtonAdmin2"
+        android:layout_width="145dp"
+        android:layout_height="85dp"
+        android:text="Remove User"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.551" />
+
+    <Button
+        android:id="@+id/returnButtonAdmin2"
+        android:layout_width="145dp"
+        android:layout_height="85dp"
+        android:text="Return"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.682" />
+
+    <TextView
+        android:id="@+id/AdmintextView2"
+        android:layout_width="375dp"
+        android:layout_height="250dp"
+        android:text="Admin"
+        android:textSize="25sp"
+        android:fadeScrollbars="true"
+        android:gravity="center"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/returnButtonAdmin2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.033" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

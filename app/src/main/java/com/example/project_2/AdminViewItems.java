@@ -25,7 +25,7 @@ public class AdminViewItems extends AppCompatActivity {
     private Button mReturnButton;
 
 
-    private Button mListButton;
+    private Button mListItemsButton;
     private List<ProductLog> mProductLogList;
     @Override
 
@@ -38,11 +38,11 @@ public class AdminViewItems extends AppCompatActivity {
 
         mMainView=findViewById(R.id.mainTextViewAdmin);
         mReturnButton = findViewById(R.id.returnButtonAdmin);
-        mListButton = findViewById(R.id.mainListButtonAdmin);
+        mListItemsButton = findViewById(R.id.mainListButtonAdmin);
         mMainView.setMovementMethod(new ScrollingMovementMethod());
         //allows scrolling
 
-        mListButton.setOnClickListener(new View.OnClickListener() {
+        mListItemsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
             refreshDisplay();
@@ -67,7 +67,7 @@ public class AdminViewItems extends AppCompatActivity {
         for(ProductLog log : mProductLogList){
             sb.append(log);
             sb.append("\n");
-            sb.append("=-=-=-=-=-=-=-=");
+            sb.append("=-=-=-=-=-=-=-=-=-=-=");
             sb.append("\n");
         }
         mMainView.setText(sb.toString());

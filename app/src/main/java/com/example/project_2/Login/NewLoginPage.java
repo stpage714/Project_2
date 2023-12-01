@@ -1,6 +1,4 @@
-package com.example.project_2;
-
-import static com.example.project_2.MainActivity.USER_ID_KEY;
+package com.example.project_2.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -15,7 +13,11 @@ import android.widget.Toast;
 
 import com.example.project_2.DB.AppDataBase;
 import com.example.project_2.DB.ProductLogDAO;
+import com.example.project_2.R;
+import com.example.project_2.User;
 import com.example.project_2.databinding.ActivityMainBinding;
+
+import java.util.List;
 
 public class NewLoginPage extends AppCompatActivity {
     private ProductLogDAO mProductLogDAO;
@@ -26,6 +28,8 @@ public class NewLoginPage extends AppCompatActivity {
     private EditText mNewUsernameField;
     private EditText mNewPasswordField;
     private Button mNewSubmit;
+    private List<User> userlog;
+    private int count=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,16 +44,35 @@ public class NewLoginPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getValuesFromDisplay();
-                Toast.makeText(NewLoginPage.this,"User added!",Toast.LENGTH_SHORT).show();
-
-                mUser = new User(mNewUsername, mNewPassword,false);
-                mProductLogDAO.insert(mUser);// new user added
-
-                Intent intent = LoginActivity.intentFactory(getApplicationContext());
-                startActivity(intent);
-            }
+                if(containsUserName()){
+                    Toast.makeText(NewLoginPage.this,"Username already in use",Toast.LENGTH_LONG).show();
+                    ++count;
+                }else{
+                    Toast.makeText(NewLoginPage.this,"User added!",Toast.LENGTH_LONG).show();
+                    mUser = new User(mNewUsername, mNewPassword,false);
+                    mProductLogDAO.insert(mUser);// new user added
+                    Intent intent = LoginActivity.intentFactory(getApplicationContext());
+                    startActivity(intent);
+                }
+                mNewUsernameField.getText().clear();
+                mNewPasswordField.getText().clear();
+                if(count > 2){
+                    Toast.makeText(NewLoginPage.this,"Too many bad attempts",Toast.LENGTH_LONG).show();
+                    Intent intent = LoginActivity.intentFactory(getApplicationContext());
+                    startActivity(intent);
+                }
+            }//end onclick
         });
     }//end oncreate
+    private boolean containsUserName(){
+        userlog=mProductLogDAO.getAllUsers();
+        for( User element : userlog){
+            if(element.getUserName().equals(mNewUsername)){
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void wireupDisplay(){
         mNewUsernameField = findViewById(R.id.editTextLoginNewUserName);

@@ -26,7 +26,7 @@
         android:id="@+id/mainListButtonAdmin"
         android:layout_width="150dp"
         android:layout_height="120dp"
-        android:text="List"
+        android:text="List Items"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

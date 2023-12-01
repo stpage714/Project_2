@@ -8,10 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.project_2.DB.AppDataBase;
 import com.example.project_2.DB.ProductLogDAO;
+import com.example.project_2.Login.LoginActivity;
 import com.example.project_2.databinding.ActivityMainBinding;
 
 public class AdminPage extends AppCompatActivity {
@@ -58,7 +58,8 @@ public class AdminPage extends AppCompatActivity {
         mExistingUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //not implemented
+                intent = ViewUsersPage.intentFactory(getApplicationContext());
+                startActivity(intent);
             }
         });
 

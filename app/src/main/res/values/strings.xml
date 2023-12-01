@@ -17,4 +17,6 @@
 
     <string name="new_username">Enter new username</string>
     <string name="new_password">Enter new password</string>
+    <string name="user_id">Enter User ID</string>
+    <string name="enter_user_id_to_remove">Enter user ID to remove</string>
 </resources>
