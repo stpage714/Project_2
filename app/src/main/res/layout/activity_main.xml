@@ -17,90 +17,96 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.649"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainSubmitButton" />
+        app:layout_constraintTop_toBottomOf="@+id/mainBuyButton" />
 
 
     <TextView
         android:id="@+id/mainProductLogDisplay"
-        android:layout_width="228dp"
-        android:layout_height="126dp"
+        android:layout_width="match_parent"
+        android:layout_height="228dp"
         android:layout_marginTop="40dp"
         android:fadeScrollbars="true"
         android:gravity="center"
         android:scrollbars="vertical"
         android:text="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/mainDescriptionEditText"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:hint="@string/mainDescriptionHint"
-        android:inputType="textPersonName"
-        android:textSize="10sp"
-        android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.246" />
 
     <EditText
-        android:id="@+id/mainQuantityEditText"
+        android:id="@+id/mainIDnumberEditText"
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:gravity="center"
-        android:hint="@string/mainQuantityHint"
-        android:inputType="numberSigned"
-        android:textSize="10sp"
+        android:hint="Enter Product ID"
+        android:inputType="textPersonName"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.059"
+        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.327" />
+        app:layout_constraintVertical_bias="0.552" />
 
     <Button
-        android:id="@+id/mainSubmitButton"
-        android:layout_width="150dp"
-        android:layout_height="120dp"
-        android:text="Submit"
+        android:id="@+id/mainBuyButton"
+        android:layout_width="114dp"
+        android:layout_height="80dp"
+        android:text="@string/buy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.293" />
+        app:layout_constraintVertical_bias="0.436" />
 
+    <Button
+        android:id="@+id/mainSearchButton"
+        android:layout_width="115dp"
+        android:layout_height="80dp"
+        android:text="Search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42" />
+
+    <Button
+        android:id="@+id/mainOrderHistoryButton"
+        android:layout_width="115dp"
+        android:layout_height="80dp"
+        android:text="@string/order_history"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.559" />
 
     <Button
         android:id="@+id/mainLogoutButton"
-        android:layout_width="150dp"
-        android:layout_height="120dp"
+        android:layout_width="115dp"
+        android:layout_height="80dp"
         android:text="Logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.919"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.489" />
-
-
+        app:layout_constraintVertical_bias="0.559" />
 
     <TextView
         android:id="@+id/GreetingstextView"
-        android:layout_width="142dp"
-        android:layout_height="16dp"
-        android:text="Greetings"
+        android:layout_width="386dp"
+        android:layout_height="42dp"
         android:gravity="center"
+        android:text="Greetings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

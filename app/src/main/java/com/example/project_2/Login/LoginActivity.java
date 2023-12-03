@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.project_2.AdminPage;
+import com.example.project_2.Admin.AdminPage;
 import com.example.project_2.DB.AppDataBase;
 import com.example.project_2.DB.ProductLogDAO;
 import com.example.project_2.MainActivity;

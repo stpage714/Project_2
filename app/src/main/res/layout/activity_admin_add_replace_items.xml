@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminAddItemsPage">
+    tools:context=".Admin.AdminAddReplaceItems">
 
     <TextView
         android:id="@+id/maintextView4"
-        android:layout_width="408dp"
-        android:layout_height="156dp"
+        android:layout_width="413dp"
+        android:layout_height="168dp"
         android:gravity="center"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,6 +20,21 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
+        android:id="@+id/idFieldEditTextViewAdmin"
+        android:layout_width="266dp"
+        android:layout_height="44dp"
+        android:gravity="center"
+        android:hint="Enter id # if replacing"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.244" />
+
+    <EditText
         android:id="@+id/descriptionEditTextViewAdmin"
         android:layout_width="266dp"
         android:layout_height="44dp"
@@ -28,11 +43,11 @@
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.226" />
+        app:layout_constraintVertical_bias="0.308" />
 
     <EditText
         android:id="@+id/quantityEditTextViewAdmin"
@@ -47,7 +62,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.289" />
+        app:layout_constraintVertical_bias="0.372" />
 
     <EditText
         android:id="@+id/priceEditTextViewAdmin"
@@ -62,33 +77,45 @@
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.352" />
+        app:layout_constraintVertical_bias="0.436" />
 
     <Button
-        android:id="@+id/SubmitProductButtonAdmin"
-        android:layout_width="150dp"
+        android:id="@+id/addProductButtonAdmin"
+        android:layout_width="130dp"
         android:layout_height="90dp"
-        android:text="Submit"
-        android:textSize="25sp"
+        android:text="Add"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.485" />
+        app:layout_constraintVertical_bias="0.56" />
+
+    <Button
+        android:id="@+id/replaceProductButtonAdmin"
+        android:layout_width="130dp"
+        android:layout_height="90dp"
+        android:text="Replace"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
 
     <Button
         android:id="@+id/returnButtonAdmin4"
-        android:layout_width="150dp"
+        android:layout_width="130dp"
         android:layout_height="90dp"
-        android:text="Return"
-        android:textSize="25sp"
+        android:text="@string/back"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
+        app:layout_constraintVertical_bias="0.56" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

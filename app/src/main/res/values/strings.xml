@@ -22,8 +22,20 @@
     <string name="enter_description">Enter Description</string>
     <string name="enter_quantity">Enter Quantity</string>
     <string name="enter_price">Enter Price</string>
-    <string name="return">Return</string>
+
     <string name="Back">Return</string>
     <string name="remove_user">Remove User</string>
     <string name="admin">Admin</string>
+    <string name="back">Return</string>
+    <string name="delete_items">Delete Items</string>
+    <string name="view_users">View Users</string>
+    <string name="view_items">View Items</string>
+    <string name="add_items">Add Items</string>
+    <string name="welcome_admin">Welcome Admin!</string>
+    <string name="add_replace_items">Add/Replace Items</string>
+    <string name="view_delete_users">view/delete users</string>
+    <string name="enter_item_number_to_remove">Enter item number to remove</string>
+    <string name="remove_item">Remove Item</string>
+    <string name="buy">Buy</string>
+    <string name="order_history">Order History</string>
 </resources>

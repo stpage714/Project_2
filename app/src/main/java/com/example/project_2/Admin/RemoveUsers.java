@@ -1,4 +1,4 @@
-package com.example.project_2;
+package com.example.project_2.Admin;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,6 +18,8 @@ import androidx.room.Room;
 
 import com.example.project_2.DB.AppDataBase;
 import com.example.project_2.DB.ProductLogDAO;
+import com.example.project_2.R;
+import com.example.project_2.User;
 import com.example.project_2.databinding.ActivityMainBinding;
 
 import java.util.List;

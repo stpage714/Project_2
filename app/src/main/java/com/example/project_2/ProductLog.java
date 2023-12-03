@@ -5,17 +5,15 @@ import androidx.room.PrimaryKey;
 
 import com.example.project_2.DB.AppDataBase;
 
+import java.text.NumberFormat;
 import java.util.Date;
 
 
 @Entity(tableName = AppDataBase.PRODUCT_TABLE)
 public class ProductLog {
-
     @PrimaryKey(autoGenerate = true)
     //declare primary key for table
     private int mProductId;//mProductId is primary key
-
-
     private String mDescription;
     private int mQuantity;
     private double mPrice;
@@ -79,7 +77,7 @@ public class ProductLog {
         output += "\n";
         output += "Quantity: " + mQuantity;
         output += "\n";
-        output += "Price: " + mPrice;
+        output += "Price: $" + mPrice;
         output += "\n";
         output += getDate();
         output += "\n";

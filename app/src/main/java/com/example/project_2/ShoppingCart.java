@@ -2,43 +2,49 @@ package com.example.project_2;
 
 import androidx.room.Entity;
 
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import com.example.project_2.DB.AppDataBase;
 
     @Entity(tableName = AppDataBase.SHOPPING_CART_TABLE)
+/*,foreignKeys = @ForeignKey(
+            entity = ProductLog.class,
+            parentColumns = "mProductId",
+            childColumns = "mProductIdShopping",
+            onDelete = ForeignKey.CASCADE,
+            onUpdate = ForeignKey.CASCADE))
+ */
     public class ShoppingCart {
         @PrimaryKey(autoGenerate = true)
-        private int mCartId;
+        private int mCartIdShopping;
+        private int mProductIdShopping;
 
-        private int mProductId;
-
-        public ShoppingCart(int cartId, int productId) {
-            mCartId = cartId;
-            mProductId = productId;
+        public ShoppingCart(int cartIdShopping) {
+            mCartIdShopping = cartIdShopping;
         }
 
-        public int getCartId() {
-            return mCartId;
+        public int getCartIdShopping() {
+            return mCartIdShopping;
         }
 
-        public void setCartId(int cartId) {
-            mCartId = cartId;
+        public void setCartIdShopping(int cartIdShopping) {
+            mCartIdShopping = cartIdShopping;
         }
 
-        public int getProductId() {
-            return mProductId;
+        public int getProductIdShopping() {
+            return mProductIdShopping;
         }
 
-        public void setProductId(int productId) {
-            mProductId = productId;
+        public void setProductIdShopping(int productIdShopping) {
+            mProductIdShopping = productIdShopping;
         }
 
         @Override
         public String toString() {
             return "ShoppingCart{" +
-                    "mCartId=" + mCartId +
-                    ", mProductId=" + mProductId +
+                    "mCartId=" + mCartIdShopping +
+                    ", mProductId=" + mProductIdShopping +
                     '}';
         }
     }

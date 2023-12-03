@@ -1,4 +1,4 @@
-package com.example.project_2;
+package com.example.project_2.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -12,6 +12,8 @@ import android.widget.Button;
 import com.example.project_2.DB.AppDataBase;
 import com.example.project_2.DB.ProductLogDAO;
 import com.example.project_2.Login.LoginActivity;
+import com.example.project_2.R;
+import com.example.project_2.ViewUsersPage;
 import com.example.project_2.databinding.ActivityMainBinding;
 
 public class AdminPage extends AppCompatActivity {
@@ -20,7 +22,7 @@ public class AdminPage extends AppCompatActivity {
     private Button mLogOut;
     private Button mAdminAdd;
     private Button mAdminView;
-    private Button mAdminReplace;
+    private Button mAdminDelete;
     private Button mExistingUsers;
     private Intent intent;
     @Override
@@ -34,7 +36,7 @@ public class AdminPage extends AppCompatActivity {
         mAdminAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = AdminAddItemsPage.intentFactory(getApplicationContext());
+                intent = AdminAddReplaceItems.intentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
@@ -48,11 +50,12 @@ public class AdminPage extends AppCompatActivity {
             }
         });//end viewExistingitems listener
 
-        mAdminReplace = findViewById(R.id.adminReplaceButton);
-        mAdminReplace.setOnClickListener(new View.OnClickListener() {
+        mAdminDelete = findViewById(R.id.adminDeleteButton);
+        mAdminDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //not implemented
+                intent = RemoveItems.intentFactory(getApplicationContext());
+                startActivity(intent);
             }
         });
         mExistingUsers = findViewById(R.id.adminViewExistingUsersButton);

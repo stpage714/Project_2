@@ -1,4 +1,4 @@
-package com.example.project_2;
+package com.example.project_2.Admin;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,11 +18,13 @@ import android.widget.Toast;
 
 import com.example.project_2.DB.AppDataBase;
 import com.example.project_2.DB.ProductLogDAO;
+import com.example.project_2.ProductLog;
+import com.example.project_2.R;
 import com.example.project_2.databinding.ActivityMainBinding;
 
 import java.util.List;
 
-public class AdminAddItemsPage extends AppCompatActivity {
+public class AdminAddReplaceItems extends AppCompatActivity {
     private ActivityMainBinding binding;//this binds widgets to display
     private ProductLogDAO mProductLogDAO;
     private List<ProductLog> mProductLogList;
@@ -29,29 +32,36 @@ public class AdminAddItemsPage extends AppCompatActivity {
     private EditText mDescriptionAdmin;
     private EditText mQuantityAdmin;
     private EditText mPriceAdmin;
-
-    private Button mSubmit;
+    private EditText midAdmin;
+    private Button mAdd;
+    private Button mReplace;
     private Button mLogOut;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_items_page);
+        setContentView(R.layout.activity_admin_add_replace_items);
         getDatabase();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         //links textview/edittext/button to mainactivity
 
         mMainDisplayAddItemAdmin = findViewById(R.id.maintextView4);
+        //allows scrolling
+        mMainDisplayAddItemAdmin.setMovementMethod(new ScrollingMovementMethod());
         mDescriptionAdmin = findViewById(R.id.descriptionEditTextViewAdmin);
+        midAdmin = findViewById(R.id.idFieldEditTextViewAdmin);
         mQuantityAdmin = findViewById(R.id.quantityEditTextViewAdmin);
         mPriceAdmin = findViewById(R.id.priceEditTextViewAdmin);
-        mSubmit = findViewById(R.id.SubmitProductButtonAdmin);
+        mAdd = findViewById(R.id.addProductButtonAdmin);
+        mReplace = findViewById(R.id.replaceProductButtonAdmin);
         mLogOut = findViewById(R.id.returnButtonAdmin4);
+
         refreshDisplay();
-        mSubmit.setOnClickListener(new View.OnClickListener() {
+        mAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ProductLog temp = getValuesFromDisplay();
-                AlertDialog.Builder alertbuilder = new AlertDialog.Builder(AdminAddItemsPage.this);
+                AlertDialog.Builder alertbuilder = new AlertDialog.Builder(AdminAddReplaceItems.this);
                 alertbuilder.setMessage("Add Item?");
                 alertbuilder.setCancelable(true);
 
@@ -60,7 +70,7 @@ public class AdminAddItemsPage extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(AdminAddItemsPage.this, "Item added", Toast.LENGTH_LONG).show();
+                                Toast.makeText(AdminAddReplaceItems.this, "Item added", Toast.LENGTH_LONG).show();
                                 mProductLogDAO.insert(temp);
                                 refreshDisplay();
                                 mDescriptionAdmin.getText().clear();//clear field
@@ -93,6 +103,67 @@ public class AdminAddItemsPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });//end mLogout onclicklistener
+
+        mReplace.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alertbuilder = new AlertDialog.Builder(AdminAddReplaceItems.this);
+                alertbuilder.setMessage("Replace Item?");
+                alertbuilder.setCancelable(true);
+
+                alertbuilder.setPositiveButton(
+                        getString(R.string.Yes),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                int tempID=0;
+                                try{
+                                    tempID = Integer.parseInt(midAdmin.getText().toString());
+                                }catch (NumberFormatException e){
+                                    Log.d("Product log","Couldnt convert ID");
+                                }
+                                mProductLogList = mProductLogDAO.getProductLogsById(tempID);
+                                ProductLog tempLog = mProductLogList.get(0);
+                                ProductLog compareLog = getValuesFromDisplay();
+                                //compare fields
+                                String tempDescription = tempLog.getDescription() ;
+                                int tempQuantity = tempLog.getQuantity();
+                                double tempPrice = tempLog.getPrice();
+
+                                if(! (tempLog.getDescription().equals(compareLog.getDescription()))){
+                                    tempDescription = compareLog.getDescription();
+                                }
+                                if(! (tempLog.getQuantity() == (compareLog.getQuantity()))){
+                                    tempQuantity = compareLog.getQuantity();
+                                }
+                                if(! (tempLog.getPrice() == (compareLog.getPrice()))){
+                                    tempPrice = compareLog.getPrice();
+                                }
+                                mProductLogDAO.updateProductLogsById(tempDescription,tempQuantity,tempPrice,tempID);
+                                Toast.makeText(AdminAddReplaceItems.this, "Item Replaced", Toast.LENGTH_LONG).show();
+                                refreshDisplay();
+                                midAdmin.getText().clear();//clear field
+                                mDescriptionAdmin.getText().clear();//clear field
+                                mQuantityAdmin.getText().clear();//clear field
+                                mPriceAdmin.getText().clear();//clear field
+                            }
+                        });
+
+                alertbuilder.setNegativeButton(
+                        getString(R.string.No),
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                mDescriptionAdmin.getText().clear();//clear field
+                                mQuantityAdmin.getText().clear();//clear field
+                                mPriceAdmin.getText().clear();//clear field
+                            }
+                        });
+
+                alertbuilder.create().show();
+                refreshDisplay();
+            }
+        });//end mDelete onclicklistener
     }//end oncreate
 
     private ProductLog getValuesFromDisplay(){
@@ -142,7 +213,7 @@ public class AdminAddItemsPage extends AppCompatActivity {
 
     //create intent factory to be called statically
     public static Intent intentFactory(Context context){
-        Intent intent = new Intent(context, AdminAddItemsPage.class);
+        Intent intent = new Intent(context, AdminAddReplaceItems.class);
         return intent;
     }
 }

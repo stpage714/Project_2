@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:allowBackup="true"
@@ -12,28 +12,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_2"
         android:windowSoftInputMode="adjustNothing"
-        tools:targetApi="31" >
+        tools:targetApi="31">
         <activity
-            android:name=".ViewItemsPage"
+            android:name=".BuyScreen"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false" />
         <activity
-            android:name=".AdminViewItems"
+            android:name=".Admin.RemoveItems"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity
+            android:name=".Admin.AdminViewItems"
             android:exported="false" />
         <activity
-            android:name=".AdminAddItemsPage"
+            android:name=".Admin.AdminAddReplaceItems"
             android:exported="false" />
         <activity
             android:name=".ViewUsersPage"
             android:exported="false" />
         <activity
-            android:name=".RemoveUsers"
+            android:name=".Admin.RemoveUsers"
             android:exported="false"
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".Login.NewLoginPage"
             android:exported="false" />
         <activity
-            android:name=".AdminPage"
+            android:name=".Admin.AdminPage"
             android:exported="false" />
         <activity
             android:name=".Login.LoginActivity"
@@ -41,7 +46,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan" >
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

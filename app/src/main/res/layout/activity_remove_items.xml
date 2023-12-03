@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewUsersPage">
+    tools:context=".Admin.RemoveItems">
+
 
     <Button
-        android:id="@+id/RemoveUserButtonAdmin3"
+        android:id="@+id/RemoveItemButtonAdmin"
         android:layout_width="150dp"
         android:layout_height="90dp"
-        android:text="@string/remove_user"
+        android:text="@string/remove_item"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,7 +21,7 @@
         app:layout_constraintVertical_bias="0.555" />
 
     <Button
-        android:id="@+id/returnButtonAdmin3"
+        android:id="@+id/returnButtonAdmin5"
         android:layout_width="150dp"
         android:layout_height="90dp"
         android:text="@string/Back"
@@ -33,7 +34,7 @@
         app:layout_constraintVertical_bias="0.555" />
 
     <TextView
-        android:id="@+id/AdmintextView3"
+        android:id="@+id/AdmintextView5"
         android:layout_width="400dp"
         android:layout_height="300dp"
         android:fadeScrollbars="true"
@@ -50,12 +51,12 @@
         app:layout_constraintVertical_bias="0.033" />
 
     <EditText
-        android:id="@+id/removetextView3"
+        android:id="@+id/removetextView5"
         android:layout_width="235dp"
         android:layout_height="42dp"
 
         android:gravity="center"
-        android:hint="@string/enter_user_id_to_remove"
+        android:hint="@string/enter_item_number_to_remove"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,6 +64,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.455" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

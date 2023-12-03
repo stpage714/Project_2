@@ -1,4 +1,4 @@
-package com.example.project_2;
+package com.example.project_2.Admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.example.project_2.DB.AppDataBase;
 import com.example.project_2.DB.ProductLogDAO;
+import com.example.project_2.ProductLog;
+import com.example.project_2.R;
 import com.example.project_2.databinding.ActivityMainBinding;
 
 import java.util.List;
