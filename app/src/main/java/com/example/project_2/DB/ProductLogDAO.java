@@ -34,6 +34,9 @@ public interface ProductLogDAO {
     @Query("SELECT * FROM " + AppDataBase.PRODUCT_TABLE + " WHERE mProductId = :productId")
     List<ProductLog> getProductLogsById(int productId);//only return records where id matches productId
 
+    @Query("SELECT * FROM " + AppDataBase.PRODUCT_TABLE + " WHERE mDescription = :description")
+    List<ProductLog> getProductLogsByDescription(String description);//only return records where description matches
+
     @Query("UPDATE " + AppDataBase.PRODUCT_TABLE + " SET mDescription = :description, mQuantity = :quantity,mPrice = :price WHERE mProductId = :productId")
     void updateProductLogsById(String description,int quantity, double price, int productId);//only return records where id matches productId
 

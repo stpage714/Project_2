@@ -76,6 +76,13 @@ public class MainActivity extends AppCompatActivity {
         refreshDisplay();
 
 
+        mSearchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = Search.intentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });//end mSearchButton
 
         mBuyButton.setOnClickListener(new View.OnClickListener() {
             @Override

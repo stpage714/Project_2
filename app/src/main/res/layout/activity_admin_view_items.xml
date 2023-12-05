@@ -14,7 +14,7 @@
         android:gravity="center"
         android:scrollbars="vertical"
         android:text="Main Display"
-        android:textSize="30sp"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

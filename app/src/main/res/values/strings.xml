@@ -38,4 +38,27 @@
     <string name="remove_item">Remove Item</string>
     <string name="buy">Buy</string>
     <string name="order_history">Order History</string>
+    <string name="choose_color">Choose Color:</string>
+
+    <string-array name="colors">
+        <item>Red widget</item>
+        <item>Orange widget</item>
+        <item>Yellow widget</item>
+        <item>Green widget</item>
+        <item>Blue widget</item>
+        <item>Violet widget</item>
+        <item>White widget</item>
+        <item>Black widget</item>
+    </string-array>
+
+    <string-array name="numbers">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
 </resources>
