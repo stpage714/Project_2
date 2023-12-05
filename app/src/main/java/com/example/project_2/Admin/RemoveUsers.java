@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import androidx.room.Room;
 
 import com.example.project_2.DB.AppDataBase;
 import com.example.project_2.DB.ProductLogDAO;
+import com.example.project_2.MainActivity;
 import com.example.project_2.R;
 import com.example.project_2.User;
 import com.example.project_2.databinding.ActivityMainBinding;
@@ -97,11 +99,15 @@ public class RemoveUsers extends AppCompatActivity {
                         User temp = mProductLogDAO.getUserByUserId(userID);
                         if (temp != null) {
                             mProductLogDAO.delete(temp);
-                            Toast.makeText(RemoveUsers.this, "Username Removed", Toast.LENGTH_LONG).show();
+                            Toast toast = Toast.makeText(RemoveUsers.this, "Username Removed", Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
                             refreshDisplay();
                             mRemoveUserTextField.getText().clear();//clear field
                         } else {
-                            Toast.makeText(RemoveUsers.this, "User doesn't exist", Toast.LENGTH_LONG).show();
+                            Toast toast = Toast.makeText(RemoveUsers.this, "User doesn't exist", Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();
                             mRemoveUserTextField.getText().clear();//clear field
                         }
                     }

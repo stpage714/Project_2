@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,8 @@ import android.widget.Toast;
 
 import com.example.project_2.DB.AppDataBase;
 import com.example.project_2.DB.ProductLogDAO;
+import com.example.project_2.Login.NewLoginPage;
+import com.example.project_2.MainActivity;
 import com.example.project_2.ProductLog;
 import com.example.project_2.R;
 import com.example.project_2.databinding.ActivityMainBinding;
@@ -70,7 +73,9 @@ public class AdminAddReplaceItems extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(AdminAddReplaceItems.this, "Item added", Toast.LENGTH_LONG).show();
+                                Toast toast = Toast.makeText(AdminAddReplaceItems.this, "Item added", Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
                                 mProductLogDAO.insert(temp);
                                 refreshDisplay();
                                 mDescriptionAdmin.getText().clear();//clear field
@@ -140,7 +145,9 @@ public class AdminAddReplaceItems extends AppCompatActivity {
                                     tempPrice = compareLog.getPrice();
                                 }
                                 mProductLogDAO.updateProductLogsById(tempDescription,tempQuantity,tempPrice,tempID);
-                                Toast.makeText(AdminAddReplaceItems.this, "Item Replaced", Toast.LENGTH_LONG).show();
+                                Toast toast = Toast.makeText(AdminAddReplaceItems.this, "Item Replaced", Toast.LENGTH_LONG);
+                                toast.setGravity(Gravity.CENTER, 0, 0);
+                                toast.show();
                                 refreshDisplay();
                                 midAdmin.getText().clear();//clear field
                                 mDescriptionAdmin.getText().clear();//clear field

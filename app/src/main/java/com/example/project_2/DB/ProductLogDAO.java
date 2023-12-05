@@ -40,6 +40,7 @@ public interface ProductLogDAO {
     @Query("UPDATE " + AppDataBase.PRODUCT_TABLE + " SET mQuantity = :quantity WHERE mProductId = :productId")
     void updateProductLogsByQuantityAndId(int productId, int quantity);//only return records where id matches productId
 
+
     //create crud for users
     @Insert
     void insert(User...users);

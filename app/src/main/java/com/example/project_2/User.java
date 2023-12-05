@@ -7,13 +7,14 @@ import com.example.project_2.DB.AppDataBase;
 
 @Entity(tableName = AppDataBase.USER_TABLE)
 
-/*,foreignKeys = @ForeignKey(
+/* ,foreignKeys = @ForeignKey(
         entity = ShoppingCart.class,
         parentColumns = "mCartIdShopping",
         childColumns = "mCartIdUser",
         onDelete = ForeignKey.CASCADE,
-        onUpdate = ForeignKey.CASCADE))
+        onUpdate = ForeignKey.CASCADE)
  */
+
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int mUserId;

@@ -6,6 +6,7 @@ import androidx.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,10 +46,14 @@ public class NewLoginPage extends AppCompatActivity {
             public void onClick(View v) {
                 getValuesFromDisplay();
                 if(containsUserName()){
-                    Toast.makeText(NewLoginPage.this,"Username already in use",Toast.LENGTH_LONG).show();
+                    Toast toast = Toast.makeText(NewLoginPage.this,"Username already in use",Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                     ++count;
                 }else{
-                    Toast.makeText(NewLoginPage.this,"User added!",Toast.LENGTH_LONG).show();
+                    Toast toast = Toast.makeText(NewLoginPage.this,"User added!",Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                     mUser = new User(mNewUsername, mNewPassword,false);
                     mProductLogDAO.insert(mUser);// new user added
                     Intent intent = LoginActivity.intentFactory(getApplicationContext());
@@ -57,9 +62,9 @@ public class NewLoginPage extends AppCompatActivity {
                 mNewUsernameField.getText().clear();
                 mNewPasswordField.getText().clear();
                 if(count > 2){
-                    Toast.makeText(NewLoginPage.this,"Too many bad attempts",Toast.LENGTH_LONG).show();
-                    Intent intent = LoginActivity.intentFactory(getApplicationContext());
-                    startActivity(intent);
+                    Toast toast = Toast.makeText(NewLoginPage.this,"Too many bad attempts",Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
             }//end onclick
         });

@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -85,7 +86,9 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("Product log","Couldn't convert ID");
                 }
                 if((mProductId == 0) || (mProductId > mProductLogList.size())){
-                    Toast.makeText(MainActivity.this,"Please enter a valid item ID",Toast.LENGTH_SHORT).show();
+                    Toast toast = Toast.makeText(MainActivity.this,"Please enter a valid item ID",Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }else {
                     Intent intent = new Intent(MainActivity.this, BuyScreen.class);
                     Bundle extras = new Bundle();

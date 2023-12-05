@@ -8,6 +8,8 @@ import androidx.room.PrimaryKey;
 import com.example.project_2.DB.AppDataBase;
 
     @Entity(tableName = AppDataBase.SHOPPING_CART_TABLE)
+
+
 /*,foreignKeys = @ForeignKey(
             entity = ProductLog.class,
             parentColumns = "mProductId",
@@ -18,10 +20,11 @@ import com.example.project_2.DB.AppDataBase;
     public class ShoppingCart {
         @PrimaryKey(autoGenerate = true)
         private int mCartIdShopping;
+
         private int mProductIdShopping;
 
-        public ShoppingCart(int cartIdShopping) {
-            mCartIdShopping = cartIdShopping;
+        public ShoppingCart(int productIdShopping) {
+            mProductIdShopping = productIdShopping;
         }
 
         public int getCartIdShopping() {

@@ -6,6 +6,7 @@ import androidx.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,7 +51,9 @@ public class LoginActivity extends AppCompatActivity {
                 getValuesFromDisplay();
                 if(checkForUserInDatabase()){
                     if(!validatePassword()){
-                        Toast.makeText(LoginActivity.this,"Invalid password",Toast.LENGTH_SHORT).show();
+                        Toast toast = Toast.makeText(LoginActivity.this,"Invalid password",Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();
                     }else{
                         if((mUsername.equals("admin2") && mPassword.equals("admin2")) || mUser.getMisAdmin()){
                             //admin
@@ -91,7 +94,9 @@ public class LoginActivity extends AppCompatActivity {
     private boolean checkForUserInDatabase(){
         mUser = mProductLogDAO.getUserByUsername(mUsername);
         if(mUser == null){
-            Toast.makeText(this,"no user " + mUsername + " found",Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this,"no user " + mUsername + " found",Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
             return false;
         }
         return true;

@@ -11,7 +11,7 @@ import com.example.project_2.ProductLog;
 import com.example.project_2.ShoppingCart;
 import com.example.project_2.User;
 
-@Database(entities = {ProductLog.class, User.class, ShoppingCart.class}, version = 2)
+@Database(entities = {ProductLog.class, User.class, ShoppingCart.class}, version = 3)
 @TypeConverters({DateTypeConverter.class})
 public abstract class AppDataBase extends RoomDatabase {
     //database access point through abstraction layer
