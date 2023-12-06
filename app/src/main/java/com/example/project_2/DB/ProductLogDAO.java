@@ -78,7 +78,14 @@ public interface ProductLogDAO {
     @Query("SELECT * FROM " + AppDataBase.SHOPPING_CART_TABLE )
     ShoppingCart allShoppingCarts();
 
-    @Query("SELECT * FROM " + AppDataBase.SHOPPING_CART_TABLE + " WHERE mCartIdShopping = :cartId")
+    @Query("SELECT * FROM " + AppDataBase.SHOPPING_CART_TABLE + " WHERE mCartId = :cartId")
     ShoppingCart getCartByCartId(int cartId);
+
+    @Query("SELECT * FROM " + AppDataBase.SHOPPING_CART_TABLE + " WHERE mUserId = :userId")
+    List<ShoppingCart> getShoppingCartsByUserId(int userId);//only return records where id matches productId
+
+    @Query("DELETE FROM " + AppDataBase.SHOPPING_CART_TABLE + " WHERE mCartId = :cartId")
+    void deleteShoppingCartsByCartId(int cartId);
+
 
 }

@@ -36,6 +36,7 @@ public class BuyScreen extends AppCompatActivity {
     private Button mBuyButton;
     private Button mReturnButton;
     private int mUserId;
+    private ShoppingCart mShoppingCart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,11 +78,15 @@ public class BuyScreen extends AppCompatActivity {
                                 int logcompareQuantity = mProductLog.getQuantity();
                                 int compareDifference = logcompareQuantity - mBuyQuantity;
                                 if(compareDifference >= 0){
+                                    mShoppingCart = new ShoppingCart();
                                     mProductLogDAO.updateProductLogsByQuantityAndId(mProductID,compareDifference);//update DAO
                                     Toast toast = Toast.makeText(BuyScreen.this,"Thank you for the purchase!",Toast.LENGTH_LONG);
                                     toast.setGravity(Gravity.TOP, 0, 0);
                                     toast.show();
                                     mProductLog = mProductLogDAO.getProductLogsById(mProductID).get(0);
+                                    mShoppingCart.setUserId(mUserId);
+                                    mShoppingCart.setProductId(mProductID);
+                                    mProductLogDAO.insert(mShoppingCart);
                                     refreshDisplay();
                                 }else {
                                     Toast toast = Toast.makeText(BuyScreen.this,"Please enter a valid number",Toast.LENGTH_LONG);

@@ -6,25 +6,22 @@ import androidx.room.ForeignKey;
 import com.example.project_2.DB.AppDataBase;
 
 @Entity(tableName = AppDataBase.USER_TABLE)
-
-/* ,foreignKeys = @ForeignKey(
+/*foreignKeys = @ForeignKey(
         entity = ShoppingCart.class,
-        parentColumns = "mCartIdShopping",
-        childColumns = "mCartIdUser",
+        parentColumns = "mCartId",
+        childColumns = "mCartId",
         onDelete = ForeignKey.CASCADE,
-        onUpdate = ForeignKey.CASCADE)
- */
-
+        onUpdate = ForeignKey.CASCADE))
+*/
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int mUserId;
-
     private String mUserName;
     private String mPassword;
-    private int mCartIdUser;
+    private int mCartId;
     private Boolean misAdmin;
 
-    public User(String userName, String password,  Boolean misAdmin) {
+    public User(String userName, String password, Boolean misAdmin) {
         mUserName = userName;
         mPassword = password;
         this.misAdmin = misAdmin;
@@ -62,12 +59,12 @@ public class User {
         mPassword = password;
     }
 
-    public int getCartIdUser() {
-        return mCartIdUser;
+    public int getCartId() {
+        return mCartId;
     }
 
-    public void setCartIdUser(int cartIdUser) {
-        mCartIdUser = cartIdUser;
+    public void setCartId(int cartId) {
+        mCartId = cartId;
     }
 
     @Override
@@ -77,7 +74,7 @@ public class User {
         output += "User name : " + getUserName() + "\n";
         output += "Password : " + getPassword() + "\n";
         output += "Admin : " + getMisAdmin() + "\n";
-        output += "Cart: " + getCartIdUser() + "\n";
+        output += "Cart: " + getCartId() + "\n";
         return output;
     }
 }

@@ -8,46 +8,66 @@ import androidx.room.PrimaryKey;
 import com.example.project_2.DB.AppDataBase;
 
     @Entity(tableName = AppDataBase.SHOPPING_CART_TABLE)
-
-
-/*,foreignKeys = @ForeignKey(
-            entity = ProductLog.class,
-            parentColumns = "mProductId",
-            childColumns = "mProductIdShopping",
+/*,
+            foreignKeys = {
+            @ForeignKey(entity = User.class,
+            parentColumns = "mUserId",
+            childColumns = "mUserId",
             onDelete = ForeignKey.CASCADE,
-            onUpdate = ForeignKey.CASCADE))
- */
+            onUpdate = ForeignKey.CASCADE),
+            @ForeignKey(
+                    entity = ProductLog.class,
+                    parentColumns = "mProductId",
+                    childColumns = "mProductId",
+                    onDelete = ForeignKey.CASCADE,
+                    onUpdate = ForeignKey.CASCADE)})
+*/
     public class ShoppingCart {
         @PrimaryKey(autoGenerate = true)
-        private int mCartIdShopping;
+        private int mCartId;
+        private int mUserId;
+        private int mProductId;
 
-        private int mProductIdShopping;
-
-        public ShoppingCart(int productIdShopping) {
-            mProductIdShopping = productIdShopping;
+        public ShoppingCart() {
+            mCartId = 0;
+            mUserId = 0;
+            mProductId = 0;
         }
 
-        public int getCartIdShopping() {
-            return mCartIdShopping;
+        public ShoppingCart(int cartIdShopping, int userShopping, int productIdShopping) {
+            mCartId = cartIdShopping;
+            mUserId = userShopping;
+            mProductId = productIdShopping;
         }
 
-        public void setCartIdShopping(int cartIdShopping) {
-            mCartIdShopping = cartIdShopping;
+        public int getCartId() {
+            return mCartId;
         }
 
-        public int getProductIdShopping() {
-            return mProductIdShopping;
+        public void setCartId(int cartId) {
+            mCartId = cartId;
         }
 
-        public void setProductIdShopping(int productIdShopping) {
-            mProductIdShopping = productIdShopping;
+        public int getUserId() {
+            return mUserId;
+        }
+
+        public void setUserId(int userId) {
+            mUserId = userId;
+        }
+
+        public int getProductId() {
+            return mProductId;
+        }
+
+        public void setProductId(int productId) {
+            mProductId = productId;
         }
 
         @Override
         public String toString() {
-            return "ShoppingCart{" +
-                    "mCartId=" + mCartIdShopping +
-                    ", mProductId=" + mProductIdShopping +
-                    '}';
+            String output;
+            output = "Cart Id: " + mCartId;
+           return output;
         }
     }

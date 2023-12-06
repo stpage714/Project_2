@@ -114,6 +114,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });//end on onclick logout
 
+        mOrderHistoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, Orders.class);
+                Bundle extras = new Bundle();
+                extras.putInt(USER_ID_KEY, mUserId);
+                intent.putExtras(extras);
+                startActivity(intent);
+            }
+        });
+
         mGreeting.setText("Welcome " + mUser.getUserName() +"!");
     }//end onCreate
 

@@ -135,13 +135,13 @@ public class AdminAddReplaceItems extends AppCompatActivity {
                                 int tempQuantity = tempLog.getQuantity();
                                 double tempPrice = tempLog.getPrice();
 
-                                if(! (tempLog.getDescription().equals(compareLog.getDescription()))){
+                                if(! compareLog.getDescription().equals("")){
                                     tempDescription = compareLog.getDescription();
                                 }
-                                if(! (tempLog.getQuantity() == (compareLog.getQuantity()))){
+                                if(! (compareLog.getQuantity() == 0)){
                                     tempQuantity = compareLog.getQuantity();
                                 }
-                                if(! (tempLog.getPrice() == (compareLog.getPrice()))){
+                                if(! (compareLog.getPrice()== 0.0)){
                                     tempPrice = compareLog.getPrice();
                                 }
                                 mProductLogDAO.updateProductLogsById(tempDescription,tempQuantity,tempPrice,tempID);

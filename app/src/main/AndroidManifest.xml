@@ -14,9 +14,13 @@
         android:windowSoftInputMode="adjustNothing"
         tools:targetApi="31">
         <activity
-            android:name=".Search"
+            android:name=".Orders"
             android:windowSoftInputMode="adjustNothing" />
             android:exported="false" />
+        <activity
+            android:name=".Search"
+            android:exported="false"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".BuyScreen"
             android:exported="false"
