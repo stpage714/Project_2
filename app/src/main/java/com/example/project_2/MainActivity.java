@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.example.project_2.DB.AppDataBase;
@@ -23,18 +25,22 @@ import com.example.project_2.DB.ProductLogDAO;
 import com.example.project_2.Login.LoginActivity;
 import com.example.project_2.databinding.ActivityMainBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BuyFragment.BuyFragmentListener {
     static final String USER_ID_KEY = "com.example.project_2.userIdKey";
     static final String PRODUCT_ID_KEY = "com.example.project_2.productIdKey";
     private static final String PREFERENCES_KEY = "com.example.project_2.PREFERENCES_KEY";
     private ActivityMainBinding binding;//this binds widgets to display
     //binding object variable
-    private TextView mMainDisplay;
+    private RecyclerView mRecyclerViewMain;
+    private Recycler_Adapter mAdapterMain;
+    private RecyclerView.LayoutManager mLayoutManagerMain;
+   // private TextView mMainDisplay;
     private TextView mGreeting;
     private EditText mIdNumberField;
-
+    private ArrayList<Recycler_Item> mViewList;
 
 
     private TextView mDebug;
@@ -42,8 +48,9 @@ public class MainActivity extends AppCompatActivity {
     private Button mSearchButton;
     private Button mLogOutButton;
     private Button mOrderHistoryButton;
-    int mProductId;
-
+    private int mProductId;
+    private ShoppingCart mShoppingCart;
+    private Integer mIDfromRecycler;
     private int mUserId = -1;
     private SharedPreferences mPreferences = null;
     private User mUser;
@@ -62,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         //links textview/edittext/button to mainactivity
         setContentView(binding.getRoot());
-        mMainDisplay = binding.mainProductLogDisplay;
+
         mIdNumberField = binding.mainIDnumberEditText;
 
         mOrderHistoryButton = binding.mainOrderHistoryButton;
@@ -71,9 +78,20 @@ public class MainActivity extends AppCompatActivity {
         mSearchButton = binding.mainSearchButton;
         mDebug = binding.DEBUG;
         mGreeting = binding.GreetingstextView;
-        mMainDisplay.setMovementMethod(new ScrollingMovementMethod());
-        //allows scrolling
+
+        mRecyclerViewMain = binding.RecycleViewMain;
+        mRecyclerViewMain.setHasFixedSize(true);
+        mLayoutManagerMain = new LinearLayoutManager(this);
+        mRecyclerViewMain.setLayoutManager(mLayoutManagerMain);
         refreshDisplay();
+        mAdapterMain = new Recycler_Adapter(mViewList);
+        mRecyclerViewMain.setAdapter(mAdapterMain);
+        mAdapterMain.setOnItemClickListener(new Recycler_Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+              BuyItem(position);
+            }
+        });
 
 
         mSearchButton.setOnClickListener(new View.OnClickListener() {
@@ -128,7 +146,14 @@ public class MainActivity extends AppCompatActivity {
         mGreeting.setText("Welcome " + mUser.getUserName() +"!");
     }//end onCreate
 
+    public void BuyItem(int position){
+        mIDfromRecycler = mViewList.get(position).getID();
+        mAdapterMain.notifyItemChanged(position);
 
+        BuyFragment buyFragment = new BuyFragment();
+        buyFragment.show(getSupportFragmentManager(), "Buy Fragment");
+        refreshDisplay();
+    }
 
     private void debug() {
         mDebug = findViewById(R.id.DEBUG);
@@ -261,41 +286,104 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void refreshDisplay(){
+        mViewList = new ArrayList<>();
         mProductLogList = mProductLogDAO.getAllProductLogs();
         if( mProductLogList.size() <= 0 ) {
-            mMainDisplay.setText(R.string.no_logs_message);
+            mViewList.add(new Recycler_Item(R.drawable.cancel_icon,"No logs found!", "","",0));
             return;
         }
-        StringBuilder sb = new StringBuilder();
-        for(ProductLog log : mProductLogList){
-            sb.append(log);
-            sb.append("\n");
-            sb.append("=-=-=-=-=-=-=-=");
-            sb.append("\n");
-        }
-        mMainDisplay.setText(sb.toString());
-    }//end refreshDisplay()
 
-    private void refreshDisplayById(int id){
-        mProductLogList = mProductLogDAO.getProductLogsById(id);
-        if( mProductLogList.size() <= 0 ) {
-            mMainDisplay.setText(R.string.no_logs_message);
-            return;
-        }
-        StringBuilder sb = new StringBuilder();
+
         for(ProductLog log : mProductLogList){
-            sb.append(log);
-            sb.append("\n");
-            sb.append("=-=-=-=-=-=-=-=");
-            sb.append("\n");
+            if(log.getDescription().equalsIgnoreCase("red widget")){
+                Integer temp = log.getQuantity();
+                Double tempPrice = log.getPrice();
+                mViewList.add(new Recycler_Item(R.drawable.red_widget,log.getDescription(),temp.toString(),
+                                tempPrice.toString(),log.getProductId()));
+            }
+            if(log.getDescription().equalsIgnoreCase("orange widget")){
+                Integer temp = log.getQuantity();
+                Double tempPrice = log.getPrice();
+                mViewList.add(new Recycler_Item(R.drawable.orange_widget,log.getDescription(),temp.toString(),
+                                tempPrice.toString(),log.getQuantity()));
+            }
+            if(log.getDescription().equalsIgnoreCase("yellow widget")){
+                Integer temp = log.getQuantity();
+                Double tempPrice = log.getPrice();
+                mViewList.add(new Recycler_Item(R.drawable.yellow_widget,log.getDescription(),temp.toString(),
+                                tempPrice.toString(),log.getProductId()));
+            }
+            if(log.getDescription().equalsIgnoreCase("green widget")){
+                Integer temp = log.getQuantity();
+                Double tempPrice = log.getPrice();
+                mViewList.add(new Recycler_Item(R.drawable.green_widget,log.getDescription(),temp.toString(),
+                                tempPrice.toString(),log.getProductId()));
+            }
+            if(log.getDescription().equalsIgnoreCase("blue widget")){
+                Integer temp = log.getQuantity();
+                Double tempPrice = log.getPrice();
+                mViewList.add(new Recycler_Item(R.drawable.blue_widget,log.getDescription(),temp.toString(),
+                                tempPrice.toString(),log.getProductId()));
+            }
+            if(log.getDescription().equalsIgnoreCase("violet widget")){
+                Integer temp = log.getQuantity();
+                Double tempPrice = log.getPrice();
+                mViewList.add(new Recycler_Item(R.drawable.violet_widget,log.getDescription(),temp.toString(),
+                                tempPrice.toString(),log.getProductId()));
+            }
+            if(log.getDescription().equalsIgnoreCase("white widget")){
+                Integer temp = log.getQuantity();
+                Double tempPrice = log.getPrice();
+                mViewList.add(new Recycler_Item(R.drawable.white_widget,log.getDescription(),temp.toString(),
+                                tempPrice.toString(),log.getProductId()));
+            }
+            if(log.getDescription().equalsIgnoreCase("black widget")){
+                Integer temp = log.getQuantity();
+                Double tempPrice = log.getPrice();
+                mViewList.add(new Recycler_Item(R.drawable.black_widget,log.getDescription(),temp.toString(),
+                                tempPrice.toString(),log.getProductId()));
+            }
         }
-        mMainDisplay.setText(sb.toString());
-    }//end refreshDisplayById()
+        mAdapterMain = new Recycler_Adapter(mViewList);
+
+    }//end refreshDisplay()
 
     //create intent factory to be called statically
     public static Intent intentFactory(Context context, int userId){
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra(USER_ID_KEY,userId);
         return intent;
+    }
+
+    @Override
+    public void applyInt(Integer value) {
+
+        if ((value == 0) || (value > mProductLogList.size())) {
+            Toast toast = Toast.makeText(MainActivity.this, "Please enter a valid quantity", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
+        else {
+            Log.d("Main Screen buy quantity: ", value.toString());
+            Log.d("Main Screen ID #: ", mIDfromRecycler.toString());
+            tempProductLog = mProductLogDAO.getProductLogsById(mIDfromRecycler).get(0);
+            Integer logCompareQuantity = tempProductLog.getQuantity();
+            Log.d("Main quant : ", logCompareQuantity.toString());
+            Integer compareDifference = logCompareQuantity - value;
+            if (compareDifference >= 0) {
+                mShoppingCart = new ShoppingCart();
+                mProductLogDAO.updateProductLogsByQuantityAndId(mIDfromRecycler, compareDifference);//update DAO
+                Toast toast = Toast.makeText(MainActivity.this, "Thank you for the purchase!", Toast.LENGTH_LONG);
+                toast.setGravity(Gravity.TOP, 0, 0);
+                toast.show();
+
+                mShoppingCart.setUserId(mUserId);
+                mShoppingCart.setProductId(mIDfromRecycler);
+                mProductLogDAO.insert(mShoppingCart);
+               refreshDisplay();
+
+
+            }
+        }
     }
 }//end mainactivity

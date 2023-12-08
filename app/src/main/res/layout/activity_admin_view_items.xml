@@ -6,46 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".Admin.AdminViewItems">
 
-    <TextView
-        android:id="@+id/mainTextViewAdmin"
-        android:layout_width="332dp"
-        android:layout_height="411dp"
-        android:fadeScrollbars="true"
-        android:gravity="center"
-        android:scrollbars="vertical"
-        android:text="Main Display"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059" />
 
     <Button
-        android:id="@+id/mainListButtonAdmin"
-        android:layout_width="150dp"
-        android:layout_height="120dp"
-        android:text="List Items"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.728" />
-
-    <Button
-        android:id="@+id/returnButtonAdmin"
+        android:id="@+id/ReturnButtonViewItemsAdmin"
         android:layout_width="150dp"
         android:layout_height="120dp"
         android:text="Return"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947" />
+        app:layout_constraintVertical_bias="0.754" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/AdminViewRecyclerView"
+        android:layout_width="393dp"
+        android:layout_height="440dp"
+        android:background="@android:color/darker_gray"
+        android:padding="4dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.014" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,11 +2,22 @@ package com.example.project_2;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.PendingIntent;
+
+import androidx.core.content.ContextCompat;
+import androidx.room.Room;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -41,6 +52,16 @@ public class BuyScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_screen);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU){
+            if(ContextCompat.checkSelfPermission(BuyScreen.this,
+                    Manifest.permission.POST_NOTIFICATIONS) !=
+                    PackageManager.PERMISSION_GRANTED){
+                ActivityCompat.requestPermissions(BuyScreen.this,
+                        new String []{Manifest.permission.POST_NOTIFICATIONS},101);
+            }
+        }//ask for notification permission
+
         getDatabase();
         mBuyTextView = findViewById(R.id.BuytextView);
         mQuantityField = findViewById(R.id.quantityEditText);
@@ -88,6 +109,8 @@ public class BuyScreen extends AppCompatActivity {
                                     mShoppingCart.setProductId(mProductID);
                                     mProductLogDAO.insert(mShoppingCart);
                                     refreshDisplay();
+                                    //notification here
+                                    makeNotification();
                                 }else {
                                     Toast toast = Toast.makeText(BuyScreen.this,"Please enter a valid number",Toast.LENGTH_LONG);
                                     toast.setGravity(Gravity.CENTER, 0, 0);
@@ -137,6 +160,37 @@ public class BuyScreen extends AppCompatActivity {
                 .build()
                 .getProductLogDAO();
     }//end getDatabase
+
+    private void makeNotification(){
+        String channelID = "com.example.project_2.CHANNEL_ID_NOTIFICATION";
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(getApplicationContext(),channelID );
+        builder.setSmallIcon(R.drawable.add_alert)
+                .setContentTitle("Buy Alert!")
+                .setContentText("Notification test; linked to buy button")
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        Intent intent = new  Intent(getApplicationContext(), NotificationActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("data", "Notification test: Project 2");
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),
+                0,intent,PendingIntent.FLAG_MUTABLE);
+        builder.setContentIntent(pendingIntent);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel notificationChannel =
+                    notificationManager.getNotificationChannel(channelID);
+            if(notificationChannel == null){
+                int importance = NotificationManager.IMPORTANCE_HIGH;
+                notificationChannel = new NotificationChannel(channelID, "Notification Test",importance);
+                notificationChannel.setLightColor(Color.GREEN);
+                notificationChannel.enableVibration(true);
+                notificationManager.createNotificationChannel(notificationChannel);
+            }
+        }
+        notificationManager.notify(0,builder.build());
+    }//end makeNotification
 
     //create intent factory to be called statically
     public static Intent intentFactory(Context context){
